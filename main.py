@@ -18,9 +18,18 @@ logging.basicConfig(
 logging.info("Placeholder")
 
 
-# This function requests the data from the API (https://pokeapi.co/api/v2/type/16), The data we request are all pokemon with the Dragon typing
-def data_get():
-    print("Placeholder")
+# This function requests the data from the API (https://pokeapi.co/api/v2/type/16), The data we request are all pokemon with the Dragon typing, the function returns only the names of the pokemon.
+def data_get(timeout=10):
+    data = requests.get(url="https://pokeapi.co/api/v2/type/16", timeout=timeout).json()
+    pokemon_list = data["pokemon"]
+
+    pokemon_name_list = []
+
+    for i in pokemon_list:
+        name = i["pokemon"]["name"]
+        pokemon_name_list.append(name)
+
+    return pokemon_name_list
 
 
 # This functions filters the data so only pokemon with more then 8 letters in their name remain in the list
@@ -46,3 +55,6 @@ def json_writer():
 # This is the main function that executes the entire program
 def main():
     print("Placeholder")
+
+
+pokemon_name_list = data_get()
