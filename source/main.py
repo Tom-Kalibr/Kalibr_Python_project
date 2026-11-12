@@ -1,11 +1,8 @@
 # These are the libraries needed for the code
 import requests
-import schedule
-import time
 import logging
 import json
 import csv
-import datetime
 
 # This is the logging configuration
 logging.basicConfig(

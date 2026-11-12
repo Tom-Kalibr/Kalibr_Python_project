@@ -1,8 +1,5 @@
 import pytest
 import requests
-import sys
-
-sys.path.append("C:/Users/tomte/Praktijk_opdracht python")
 
 from source import main
 
