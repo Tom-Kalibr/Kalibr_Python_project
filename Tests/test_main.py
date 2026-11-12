@@ -285,3 +285,9 @@ def test_filter_name_length():
 def test_name_length():
     result = main.name_length(filter_name_length_check)
     assert result == name_length_check
+
+
+# This test checks to see what happens if the there is a timeout, it failes the test, this is supposed to happen
+def test_data_get2():
+    result = main.data_get(0.0000000001)
+    assert result == data_get_check
