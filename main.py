@@ -39,12 +39,19 @@ def filter_name_length(pokemon_name_list):
         name = i
         if len(name) > 8:
             filtered_list.append(name)
+
     return filtered_list
 
 
 # This function adds an extra datafield with the length of the name
-def name_length():
-    print("Placeholder")
+def name_length(filtered_list):
+    name_and_length = {"Name": [], "Length": []}
+    for i in filtered_list:
+        name = i
+        name_and_length["Name"].append(name)
+        name_and_length["Length"].append(len(name))
+
+    return name_and_length
 
 
 # This function writes the data to a CSV file
@@ -64,3 +71,4 @@ def main():
 
 pokemon_name_list = data_get()
 filtered_list = filter_name_length(pokemon_name_list)
+name_and_length = name_length(filtered_list)
