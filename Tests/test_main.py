@@ -1,8 +1,9 @@
+# These are the libraries needed for the code
 import pytest
 import requests
-
 from source import main
 
+# This is the data needed for the tests
 data_get_check = [
     "dratini",
     "dragonair",
@@ -270,6 +271,7 @@ name_length_check = [
 ]
 
 
+# These are the tests for the function in the main.py file
 def test_data_get():
     result = main.data_get()
     assert result == data_get_check

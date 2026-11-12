@@ -12,12 +12,13 @@ logging.basicConfig(
     format="%(asctime)s - %(levelname)s - %(message)s",
 )
 
+# This logs when the file was last written
 logging.info("File written")
 
 
 # This function requests the data from the API (https://pokeapi.co/api/v2/type/16), The data we request are all pokemon with the Dragon typing, the function returns only the names of the pokemon.
 def data_get(timeout=10):
-    try:
+    try:  # This try and except block gets the data from the API and turns it into JSON data, it also checks for any possible error
         data = requests.get(url="https://pokeapi.co/api/v2/type/16", timeout=timeout)
         data_json = data.json()
         data.raise_for_status()
@@ -37,6 +38,7 @@ def data_get(timeout=10):
         logging.error("requests.exception.RequestException", exc_info=True)
         raise
 
+    # The code bellow filters away all the unnecessary info so we only keep the names of the pokemon.
     pokemon_list = data_json["pokemon"]
 
     pokemon_name_list = []
@@ -96,4 +98,5 @@ def main():
     json_writer(name_and_length)
 
 
+# Executing main() executes the entire program
 main()

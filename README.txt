@@ -7,7 +7,8 @@ The program is split into 6 main files. The first file is this README, if you op
 
 The second file is the main.py file in the source map. This file contains the code that runs the script, after running the code yo will get the result as specified in the intro.
 The main.py file consists of 7 parts, the logging settings, which sets up the logs for the script, the data_get function, which gets you the data and turns it into an usable list
-The filter_name_length function, which filters out all the names with 9 characters or less, the name_length function, which gets the length of the names and turns the data in a dictionary
+The filter_name_length function, which filters out all the names with 9 characters or less, the name_length function,
+which gets the length of the names and turns the data in a dictionary.
 the csv_writer and json_writer, which write the data to the respective files.
 And finaly the main function which executes all the code
 
