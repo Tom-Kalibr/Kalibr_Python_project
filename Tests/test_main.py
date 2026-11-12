@@ -3,10 +3,6 @@ import requests
 
 import sys
 
-sys.path.append(
-    "C:/Users/tomte/Praktijk_opdracht python"
-)  # THIS SHOULD ONLY BE IN ingore.py but i couldnt get it working otherwise
-
 from source import main
 
 data_get_check = [
