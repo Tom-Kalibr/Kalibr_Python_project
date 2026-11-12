@@ -15,13 +15,32 @@ logging.basicConfig(
     format="%(asctime)s - %(levelname)s - %(message)s",
 )
 
-logging.info(f"File written at {datetime.datetime.now()}")
+logging.info("File written")
 
 
 # This function requests the data from the API (https://pokeapi.co/api/v2/type/16), The data we request are all pokemon with the Dragon typing, the function returns only the names of the pokemon.
 def data_get(timeout=10):
-    data = requests.get(url="https://pokeapi.co/api/v2/type/16", timeout=timeout).json()
-    pokemon_list = data["pokemon"]
+    try:
+        data = requests.get(url="https://pokeapi.co/api/v2/type/16", timeout=timeout)
+        data_json = data.json()
+        data.raise_for_status()
+    except requests.exceptions.Timeout:
+        logging.error("requests.exceptions.Timeout", exc_info=True)
+        raise
+    except requests.exceptions.ConnectionError:
+        logging.error("requests.exceptions.ConnectionError", exc_info=True)
+        raise
+    except requests.exceptions.HTTPError:
+        logging.error("requests.exceptions.HTTPError", exc_info=True)
+        raise
+    except requests.exceptions.JSONDecodeError:
+        logging.error("requests.exceptions.JSONDecodeError", exc_info=True)
+        raise
+    except requests.exceptions.RequestException:
+        logging.error("requests.exception.RequestException", exc_info=True)
+        raise
+
+    pokemon_list = data_json["pokemon"]
 
     pokemon_name_list = []
 
