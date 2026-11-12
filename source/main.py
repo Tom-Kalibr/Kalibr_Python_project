@@ -94,11 +94,13 @@ def json_writer(name_and_length):
 
 # This is the main function that executes the entire program
 def main():
+    print("Collecting data....")
     pokemon_name_list = data_get()
     filtered_list = filter_name_length(pokemon_name_list)
     name_and_length = name_length(filtered_list)
     csv_writer(name_and_length)
     json_writer(name_and_length)
+    print("Process was completed sucessfully, check the result files!")
 
 
 # Executing main() executes the entire program
