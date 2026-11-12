@@ -33,8 +33,13 @@ def data_get(timeout=10):
 
 
 # This functions filters the data so only pokemon with more then 8 letters in their name remain in the list
-def filter_name_length():
-    print("Placeholder")
+def filter_name_length(pokemon_name_list):
+    filtered_list = []
+    for i in pokemon_name_list:
+        name = i
+        if len(name) > 8:
+            filtered_list.append(name)
+    return filtered_list
 
 
 # This function adds an extra datafield with the length of the name
@@ -58,3 +63,4 @@ def main():
 
 
 pokemon_name_list = data_get()
+filtered_list = filter_name_length(pokemon_name_list)
