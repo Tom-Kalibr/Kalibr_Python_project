@@ -15,7 +15,7 @@ logging.basicConfig(
     format="%(asctime)s - %(levelname)s - %(message)s",
 )
 
-logging.info("Placeholder")
+logging.info(f"File written at {datetime.datetime.now()}")
 
 
 # This function requests the data from the API (https://pokeapi.co/api/v2/type/16), The data we request are all pokemon with the Dragon typing, the function returns only the names of the pokemon.
@@ -66,15 +66,18 @@ def csv_writer(name_and_length):
 
 # This function writes the data to a JSON file
 def json_writer(name_and_length):
-    print("Placeholder")
+    writer = json.dumps(name_and_length, indent=4)
+    with open("results.json", "w") as jsonfile:
+        jsonfile.write(writer)
 
 
 # This is the main function that executes the entire program
 def main():
-    print("Placeholder")
+    pokemon_name_list = data_get()
+    filtered_list = filter_name_length(pokemon_name_list)
+    name_and_length = name_length(filtered_list)
+    csv_writer(name_and_length)
+    json_writer(name_and_length)
 
 
-pokemon_name_list = data_get()
-filtered_list = filter_name_length(pokemon_name_list)
-name_and_length = name_length(filtered_list)
-csv_writer(name_and_length)
+main()
