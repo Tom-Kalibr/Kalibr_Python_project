@@ -45,22 +45,27 @@ def filter_name_length(pokemon_name_list):
 
 # This function adds an extra datafield with the length of the name
 def name_length(filtered_list):
-    name_and_length = {"Name": [], "Length": []}
+    name_and_length = []
     for i in filtered_list:
         name = i
-        name_and_length["Name"].append(name)
-        name_and_length["Length"].append(len(name))
+        length = len(name)
+        name_and_length.append({"Name": name, "Length": length})
 
     return name_and_length
 
 
 # This function writes the data to a CSV file
-def csv_writer():
-    print("Placeholder")
+def csv_writer(name_and_length):
+    fieldnames = ["Name", "Length"]
+
+    with open("results.csv", "w", newline="", encoding="UTF-8") as csvfile:
+        writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
+        writer.writeheader()
+        writer.writerows(name_and_length)
 
 
 # This function writes the data to a JSON file
-def json_writer():
+def json_writer(name_and_length):
     print("Placeholder")
 
 
@@ -72,3 +77,4 @@ def main():
 pokemon_name_list = data_get()
 filtered_list = filter_name_length(pokemon_name_list)
 name_and_length = name_length(filtered_list)
+csv_writer(name_and_length)
