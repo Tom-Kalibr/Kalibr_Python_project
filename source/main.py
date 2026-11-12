@@ -53,6 +53,7 @@ def data_get(timeout=10):
 # This functions filters the data so only pokemon with more then 8 letters in their name remain in the list
 def filter_name_length(pokemon_name_list):
     filtered_list = []
+
     for i in pokemon_name_list:
         name = i
         if len(name) > 8:
@@ -64,6 +65,7 @@ def filter_name_length(pokemon_name_list):
 # This function adds an extra datafield with the length of the name
 def name_length(filtered_list):
     name_and_length = []
+
     for i in filtered_list:
         name = i
         length = len(name)
@@ -85,6 +87,7 @@ def csv_writer(name_and_length):
 # This function writes the data to a JSON file
 def json_writer(name_and_length):
     writer = json.dumps(name_and_length, indent=4)
+
     with open("results.json", "w") as jsonfile:
         jsonfile.write(writer)
 
