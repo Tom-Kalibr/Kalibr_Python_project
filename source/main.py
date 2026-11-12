@@ -98,5 +98,9 @@ def main():
     csv_writer(name_and_length)
     json_writer(name_and_length)
 
+    print(filtered_list)
+    print("")
+    print(name_and_length)
+
 
 main()
