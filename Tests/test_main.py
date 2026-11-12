@@ -1,8 +1,6 @@
 import pytest
 import requests
 
-import sys
-
 from source import main
 
 data_get_check = [
